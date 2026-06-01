@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+//Sa se determine numărul de elemente negative dintr-un vector
+//utilizand o functie recursiva.
+
+void numarare(int a[],int m, int &nr)
+{
+    if (m == 0)
+        return;
+
+    if (a[m - 1] < 0)
+        nr++;
+
+    numarare(a, m - 1, nr);
+}
+
+int main()
+{
+    int a, m;
+    int n, v[100];
+    int nr;
+    nr = 0;
+    printf("cate elemente are vectorul?");
+    scanf("%d", &n);
+
+    printf("dati elementele vectorului:\n");
+    for (int i = 0; i < n; i++)
+        scanf("%d", &v[i]);
+
+    numarare(v, n, nr);
+
+    printf("in vector exista %d numere negative", nr);
+
+    return 0;
+}
