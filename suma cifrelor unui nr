@@ -1,0 +1,18 @@
+#include<stdio.h>
+int suma_cifrelor(int n)
+{
+if (n == 0)
+return 0;
+else
+return suma_cifrelor(n / 10) + n % 10;
+
+}
+void main()
+{
+int n;
+int suma;
+printf("Introduceti numarul:");
+scanf_s("%d", &n);
+suma = suma_cifrelor(n);
+printf("Suma cifrelor numarului %d este:%d", n, suma);
+}
