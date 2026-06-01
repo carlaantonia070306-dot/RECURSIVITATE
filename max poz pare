@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int maxim(int v[], int n, int max)
+{
+    if (n == 0) 
+        return max;
+    if ((n - 1) % 2 == 0 && v[n - 1] > max)
+    {
+        max = v[n - 1];
+        return maxim(v, n - 1, max);
+    }
+    else {
+        return maxim(v, n - 1, max);
+    }
+}
+int main()
+{
+    int v[100], n, i, maxi;
+    printf("n=");
+    scanf("%d", &n);
+    for (i = 0;i < n;i++)
+    {
+        scanf("%d", &v[i]);
+    }
+    maxi = maxim(v, n, 0);
+    printf("maximul de pe poz pare este=%d", maxi);
+
+    return 0;
+}
