@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+float produs_scalar(float a[], float b[], int nr)
+{
+	float ps;
+	if (nr == 0)
+		ps = 0;
+	else
+		ps = a[nr - 1] * b[nr - 1] + produs_scalar(a, b, nr - 1);
+	return ps;
+}
+void main()
+{
+	float a[50], b[50];
+	int nr, i;
+	float prod_scalar;
+	printf("Introduceti numarul de elemente:");
+	scanf_s("%d", &nr);
+	printf("Introduceti elementele vectorului a:\n");
+	for (i = 0; i < nr; i++)
+		scanf_s("%f", &a[i]);
+	printf("Introduceti elementele vectorului b:\n");
+	for (i = 0; i < nr; i++)
+		scanf_s("%f", &b[i]);
+	prod_scalar = produs_scalar(a, b, nr);
+	printf("Produsul scalar dintre cei doi vectori este:%f", prod_scalar);
+}
