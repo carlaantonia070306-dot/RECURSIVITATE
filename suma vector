@@ -1,25 +1,30 @@
-#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
-
-float suma_vector(float v[], int nr)
+void suma_vector(float v[], int nr, float& s)
 {
-	float suma;
-	if (nr == 0)
-		suma = 0;
-	else
-		suma = v[nr - 1] + suma_vector(v, nr - 1);
-	return suma;
+    if (nr == 0)
+        return;
+
+    s=s+ v[nr - 1];
+    suma_vector(v, nr - 1, s);
 }
 
-void main()
+int main()
 {
-	float v[50], sum;
-	int nr, i;
-	printf("Introduceti numarul de elemente:");
-	scanf_s("%d", &nr);
-	printf("Introduceti elementele vectorului:\n");
-	for (i = 0; i < nr; i++)
-		scanf_s("%f", &v[i]);
-	sum = suma_vector(v, nr);
-	printf("Suma elementelor vectorului este: %f", sum);
+    float v[50], s = 0;
+    int nr, i;
+
+    printf("Introduceti numarul de elemente: ");
+    scanf("%d", &nr);
+
+    printf("Introduceti elementele vectorului:\n");
+    for (i = 0; i < nr; i++)
+        scanf("%f", &v[i]);
+
+    suma_vector(v, nr, s);
+
+    printf("Suma elementelor vectorului este: %.2f\n", s);
+
+    return 0;
 }
