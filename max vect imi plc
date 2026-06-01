@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int maxim(int v[], int n)
+{
+	int a;
+
+	if (n == 0)
+		return v[0];
+	
+	a = maxim(v, n - 1);
+	if (a > v[n - 1])
+		return a;
+	else
+		return v[n - 1];
+
+}
+int main()
+{
+	int n, v[100];
+	int max;
+
+	printf("cate elemente are vectorul?");
+	scanf("%d", &n);
+
+	printf("dati elementele vectorului:");
+	for(int i=0; i< n;i++)
+		scanf("%d", &v[i]);
+
+	max = maxim(v, n);
+	printf("maximul vectorului este: %d", max);
+	return 0;
+}
