@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+float suma(float a[100][100], int n, int m, int i, int j)
+{
+    if (i == n)
+        return 0;
+
+    if (j == m)
+        return suma(a, n, m, i + 1, 0);
+
+    return a[i][j] + suma(a, n, m, i, j + 1);
+}
+
+int main()
+{
+    int n, m;
+    float a[100][100];
+
+    printf("Numar linii: ");
+    scanf("%d", &n);
+
+    printf("Numar coloane: ");
+    scanf("%d", &m);
+
+    printf("Elementele matricei:\n");
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            scanf("%f", &a[i][j]);
+
+    int sum = suma(a, n, m, 0, 0);
+    printf("Suma = %d", sum);
+
+    return 0;
+}
