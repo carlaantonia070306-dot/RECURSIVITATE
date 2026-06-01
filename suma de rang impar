@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+//Calulul temenilor de rang impar
+void rang(int v[], int nr, int *sum)
+{
+	if (nr < 0)
+		return;
+	*sum = *sum + v[nr];
+		rang(v, nr - 2, sum);
+
+}
+int main()
+{
+	int nr, v[100];
+	int sum = 0;
+
+	printf("cate elemente are vectorul?");
+	scanf("%d", &nr);
+
+	printf("dati elementele vectorului:");
+	for(int i=0; i< nr;i++)
+		scanf("%d", &v[i]);
+
+	if (nr % 2 == 0) 
+		rang(v, nr - 1, &sum);
+	else  rang(v, nr - 2, &sum);
+
+	printf("suma vectorului de rang impar este: %d", sum);
+	return 0;
+}
