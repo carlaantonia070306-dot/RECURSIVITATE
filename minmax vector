@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void minmax(int v[], int n, int* min, int* max)
+{
+    if (n == 1)
+    {
+        *min = *max = v[0];
+        return;
+    }
+
+    minmax(v, n - 1, min, max);
+
+    if (v[n - 1] < *min)
+        *min = v[n - 1];
+
+    if (v[n - 1] > *max)
+        *max = v[n - 1];
+}
+
+int main()
+{
+    int v[100], n;
+    int min, max;
+
+    printf("Numarul de elemente: ");
+    scanf("%d", &n);
+
+    printf("Elementele vectorului:\n");
+    for (int i = 0; i < n; i++)
+        scanf("%d", &v[i]);
+
+    minmax(v, n, &min, &max);
+
+    printf("Elementul minim este %d\n", min);
+    printf("Elementul maxim este %d\n", max);
+
+    return 0;
+}
