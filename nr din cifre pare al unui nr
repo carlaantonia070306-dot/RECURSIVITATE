@@ -43,3 +43,32 @@ int main()
 
     return 0;
 }
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int nr(int n)
+{
+    if (n == 0)
+        return 0;
+
+    int f = nr(n / 10);
+    int c = n % 10;
+
+    if (c % 2 == 0)
+        return f * 10 + c;
+
+    return f;
+}
+
+int main()
+{
+    int n;
+
+    printf("n = ");
+    scanf("%d", &n);
+
+    printf("Numarul format este = %d\n", nr(n));
+
+    return 0;
+}
